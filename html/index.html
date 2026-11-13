@@ -47,9 +47,29 @@
 
 <body>
     <div class="center">
-        <h1>Hello Again!</h1>
-        <p>This is served from a file</p>
+    <button data-room="salon" data-device="lumiere1" data-action="on">Salon : lumière 1 allumée</button>
+    <button data-room="salon" data-device="lumiere1" data-action="off">Salon : lumière 1 éteinte</button>
+    <button data-room="cuisine" data-device="lumiere1" data-action="on">Cuisine : lumière 1 allumée</button>
     </div>
+
+
+    <script>
+        document.querySelectorAll("button[data-room]").forEach((bouton) => {
+        bouton.addEventListener("click", () => {
+                    fetch("/command", {
+                        method: "POST",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify({
+                            room: bouton.dataset.room,
+                            device: bouton.dataset.device,
+                            action: bouton.dataset.action,
+                        }),
+                    });
+                });
+            });
+
+    </script>
+
 </body>
 
 </html>
