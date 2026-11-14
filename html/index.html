@@ -14,7 +14,7 @@
 			L1
 		</button>
 		<button data-room="cuisine" data-device="lumiere1" data-action="toggle">
-			<span class="button_top"> L1 </span>
+			<span class="button_top"> L2 </span>
 		</button>
 	</div>
 
@@ -22,7 +22,7 @@
     <script>
         document.querySelectorAll("button[data-room]").forEach((bouton) => {
         bouton.addEventListener("click", () => {
-                    fetch("/command", {
+                    fetch("/cmd", {
                         method: "POST",
                         headers: { "Content-Type": "application/json" },
                         body: JSON.stringify({
